@@ -81,6 +81,8 @@ def clean_dato(client)
       client.uploads.destroy(upload["id"])
       puts "Removing Image #{upload["id"]}"
     end
+  else
+    puts "BYPASS IMAGES"
   end
 end
 
