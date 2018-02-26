@@ -7,19 +7,23 @@ require "pp"
 require "pry"
 require "pg"
 
-Dotenv.load
-if ENV["DATO_TOKEN"]
-  puts "Environment vars loaded"
-end
-
-
-client = Dato::Site::Client.new(ENV["DATO_TOKEN"])
-
 def header(content)
   puts "-----------------------------"
   puts content
   puts "-----------------------------"
 end
+
+header("IMPORTER INIT")
+Dotenv.load
+if ENV["DATO_TOKEN"] && !ARGV.empty?
+  puts "Environment vars loaded"
+  puts "Performing #{ARGV}"
+else
+  abort "Missing ENV or params"
+end
+
+client = Dato::Site::Client.new(ENV["DATO_TOKEN"])
+puts "Dato loaded: #{client}"
 
 @publish ||= false
 @test    ||= false
@@ -35,7 +39,6 @@ ARGV.each do|a|
       @clean = true
   end
 end
-header("Performing #{ARGV}")
 
 # Metti i modelli in ordine
 # in modo da poter eliminare senza conflitti
