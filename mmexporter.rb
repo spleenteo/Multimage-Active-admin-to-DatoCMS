@@ -40,9 +40,9 @@ ARGV.each do|a|
   end
 end
 
-# Metti i modelli in ordine
-# in modo da poter eliminare senza conflitti
-# in caso di dipendenze e relazioni
+# Metti i modelli in un ordine tale
+# da poter eliminare senza conflitti
+# le dipendenze e le relazioni
 
 MODELS = {
   author:     {id: ENV["AUTHOR"],     active: false},
