@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
 require "dato"
 require 'dotenv'
 require "active_record"
